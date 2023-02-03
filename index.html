@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Calculadora</title>
+</head>
+
+<body>
+  <div class="corpo">
+    <section class="superior">
+      <span></span>
+      <button class="cronometro"></button>
+      <span></span>
+    </section>
+    <section class="resultado">
+      <div>
+        <span class="calculo">0</span>
+      </div>
+    </section>
+    <section class="calculador">
+      <div class="botoes">
+        <button class="operador" data-acao="soma">+</button>
+        <button class="operador" data-acao="subtrai">-</button>
+        <button class="operador" data-acao="multiplica">x</button>
+        <button class="operador" data-acao="divide">÷</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button data-acao="limpa">AC</button>
+        <button>0</button>
+        <button data-acao="ponto">.</button>
+        <button class="igual" data-acao="calcula">=</button>
+      </div>
+    </section>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
