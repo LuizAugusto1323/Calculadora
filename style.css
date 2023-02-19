@@ -1,4 +1,4 @@
-body, section, span, ul, li {
+body, section, span, ul, li, button, input {
   margin: 0;
   padding: 0;
 }
@@ -54,6 +54,7 @@ body {
    background: #000;
    height: 180px;
 }
+
 .resultado div{
     display: flex;
     flex-wrap: wrap;
@@ -63,7 +64,13 @@ body {
     align-items: end;
     height: 100%;
 }
+
 .resultado span{
+  display: none;
+}
+
+.resultado span.ativo{
+  display: block;
   text-align: right;
   max-width: 90%;
   margin: 5px 10px;
@@ -71,9 +78,44 @@ body {
   color: #fff;
 }
 
-.resultado .anterior{
+.resultado .anterior.ativo{
   font-size: 1.5rem;
   color: #414141;
+}
+
+#contador.ativo{
+  position: relative;
+  top: -180px;
+  justify-content: center;
+  align-items: center;
+}
+
+#contador .numeros{
+  display: none;
+}
+
+#contador.ativo .numeros{
+  display: flex;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+#contador .btns input{
+  display: none;
+}
+
+#contador.ativo .btns input{
+  display: inline;
+  background: #355553;
+  border: none;
+  height: 60px;
+  width: 80px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .corpo .calculador {
