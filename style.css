@@ -100,11 +100,11 @@ body {
   margin-bottom: 10px;
 }
 
-#contador .btns input{
+#contador .btns button{
   display: none;
 }
 
-#contador.ativo .btns input{
+#contador.ativo .btns button{
   display: inline;
   background: #355553;
   border: none;

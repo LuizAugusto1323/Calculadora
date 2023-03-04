@@ -3,11 +3,16 @@ const resultado = document.querySelector('.resultado .calculo');
 const btns = calculadora.querySelector('.botoes');
 const nmrAnterior = document.querySelector('.anterior');
 const cronometro = document.querySelector('.cronometro');
-const btnsCron = document.querySelectorAll('.btns input');
+const btnsCron = document.querySelectorAll('.btns button');
+const horas = document.getElementById('Horas');
+const minutos = document.getElementById('Minutos');
+const segundos = document.getElementById('Segundos');
+const centesimos = document.getElementById('Centesimos');
+const nameClass = 'ativo';
 let hora = 0;
 let minuto = 0;
 let segundo = 0;
-let milisegundo = 0;
+let centesimas = 0;
 let cron = 0;
 
 btns.addEventListener('click', (tecla) => {
@@ -85,16 +90,20 @@ btns.addEventListener('click', (tecla) => {
     }
   }
 });
-
 function handleClick() {
   const result = document.querySelectorAll('.resultado span');
   const cron = document.querySelector('.resultado #contador');
-  result.forEach((span) => span.classList.remove('ativo'));
-  cron.classList.add('ativo');
+  result.forEach((span) => {
+    if (span.classList.contains(nameClass)) {
+      span.classList.remove(nameClass);
+      cron.classList.add(nameClass);
+    } else {
+      span.classList.add(nameClass);
+      cron.classList.remove(nameClass);
+      parar();
+    }
+  });
 }
-
-cronometro.addEventListener('click', handleClick);
-
 function iniciar() {
   parar();
   cron = setInterval(() => {
@@ -104,38 +113,52 @@ function iniciar() {
 function parar() {
   clearInterval(cron);
 }
-
 function reinicio() {
   clearInterval(cron);
   hora = 0;
   minuto = 0;
   segundo = 0;
-  milisegundo = 0;
-  document.getElementById('Horas').innerText = '0';
-  document.getElementById('Minutos').innerText = '0';
-  document.getElementById('Segundos').innerText = '0';
-  document.getElementById('Milesimos').innerText = '0';
+  centesimas = 0;
+  horas.innerText = '0';
+  minutos.innerText = '0';
+  segundos.innerText = '0';
+  centesimos.innerText = '0';
 }
-
 function relogio() {
-  if ((milisegundo += 10) == 1000) {
-    milisegundo = 0;
-    segundo++;
+  if (centesimas < 99) {
+    centesimas++;
+    if (centesimas < 10) {
+      centesimas = '0' + centesimas;
+    }
+    centesimos.innerText = centesimas;
   }
-  if (segundo == 60) {
+  if (centesimas == 99) {
+    centesimas = 0;
+  }
+  if (centesimas == 0) {
+    segundo++;
+    if (segundo < 10) {
+      segundo = '0' + segundo;
+    }
+    segundos.innerText = segundo;
+  }
+  if (segundo == 59) {
     segundo = 0;
     minuto++;
+    if (minuto < 10) {
+      minuto = '0' + minuto;
+    }
   }
   if (minuto == 60) {
     minuto = 0;
     hora++;
+    if (hora < 10) {
+      hora + '0' + hora;
+    }
+    minutos.innerText = minuto;
   }
-  document.getElementById('Horas').innerText = hora;
-  document.getElementById('Minutos').innerText = minuto;
-  document.getElementById('Segundos').innerText = segundo;
-  document.getElementById('Milesimos').innerText = milisegundo;
+  horas.innerText = hora;
 }
-
 btnsCron.forEach((btn) => {
   btn.addEventListener('click', () => {
     if (btn.id === 'inicio') {
@@ -147,3 +170,4 @@ btnsCron.forEach((btn) => {
     }
   });
 });
+cronometro.addEventListener('click', handleClick);
